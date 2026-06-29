@@ -1,0 +1,7 @@
+{
+  "name": "@plantsmor/recipes",
+  "version": "0.1.0-alpha",
+  "dependencies": {
+    "@plantsmor/domain": "0.1.0-alpha"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "@plantsmor/plant-01",
+  "version": "0.1.0-alpha",
+  "dependencies": {
+    "@plantos/core": "^0.1.0-alpha",
+    "@plantsmor/recipes": "0.1.0-alpha"
+  }
+}
