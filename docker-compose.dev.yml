@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  plantos-api:
+    build: 
+      context: .
+      dockerfile: platform/api-gateway/Dockerfile.dev
+    environment:
+      - DATABASE_URL=postgres://user:pass@plantos-db:5432/plantos
+      - HISTORIAN_URL=postgres://user:pass@plantos-historian:5432/historian
+      - JWT_SECRET=dev-secret-key
+    ports:
+      - "3000:3000"
+    depends_on:
+      - plantos-db
+      - plantos-historian
+    volumes:
+      - ./platform/api-gateway:/app
+      - ./platform/core:/core
+
+  plantos-edge-driver:
+    build:
+      context: .
+      dockerfile: platform/edge-driver/Dockerfile.dev
+    environment:
+      - API_URL=http://plantos-api:3000
+      - SIMULATION_MODE=true
+    volumes:
+      - ./platform/edge-driver:/app
+
+  plantos-db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=plantos
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./platform/core/migrations:/docker-entrypoint-initdb.d
+
+  plantos-historian:
+    image: timescale/timescaledb:latest-pg14
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=historian
+    ports:
+      - "5433:5432"

@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  plantos-proxy:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./platform/proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - plantos-api
+    networks:
+      - plantos-lan
+
+  plantos-api:
+    build: 
+      context: .
+      dockerfile: platform/api-gateway/Dockerfile
+    environment:
+      - DATABASE_URL=postgres://user:pass@plantos-db:5432/plantos
+      - HISTORIAN_URL=postgres://user:pass@plantos-historian:5432/historian
+      - JWT_SECRET=local-edge-secret-key
+    depends_on:
+      - plantos-db
+      - plantos-historian
+    networks:
+      - plantos-lan
+
+  plantos-edge-driver:
+    build:
+      context: .
+      dockerfile: platform/edge-driver/Dockerfile
+    environment:
+      - API_URL=http://plantos-api:3000
+    networks:
+      - plantos-lan
+
+  plantos-db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=plantos
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./platform/core/migrations:/docker-entrypoint-initdb.d
+    networks:
+      - plantos-lan
+
+  plantos-historian:
+    image: timescale/timescaledb:latest-pg14
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=historian
+    volumes:
+      - ts_data:/var/lib/postgresql/data
+    networks:
+      - plantos-lan
+
+  plantos-backup:
+    build:
+      context: platform/backup
+    environment:
+      - DB_URL=postgres://user:pass@plantos-db:5432/plantos
+      - TS_URL=postgres://user:pass@plantos-historian:5432/historian
+    volumes:
+      - ./backups:/backups
+    networks:
+      - plantos-lan
+
+  plantos-monitor:
+    image: prom/prometheus
+    volumes:
+      - ./platform/monitor/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - plantos-lan
+
+networks:
+  plantos-lan:
+    driver: bridge
+
+volumes:
+  pg_data:
+  ts_data:
