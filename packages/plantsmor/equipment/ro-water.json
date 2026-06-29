@@ -1,0 +1,18 @@
+[
+  {
+    "tag": "RO-SYS-01",
+    "type": "ROSystem",
+    "capabilities": [
+      "CanPurifyWater"
+    ],
+    "capacity": 1000
+  },
+  {
+    "tag": "RO-TK-01",
+    "type": "BufferTank",
+    "capabilities": [
+      "CanStoreWater"
+    ],
+    "capacity": 5000
+  }
+]

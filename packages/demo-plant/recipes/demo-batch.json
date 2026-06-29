@@ -1,0 +1,29 @@
+{
+  "id": "REC-DEMO-01",
+  "name": "Basic Mixing Test",
+  "targetProduct": "Demo Mixture",
+  "operations": [
+    {
+      "sequence": 1,
+      "name": "Fill Tank",
+      "requiredCapabilities": [
+        "CanStore"
+      ],
+      "parameters": {
+        "Volume": 500
+      }
+    },
+    {
+      "sequence": 2,
+      "name": "Heat and Mix",
+      "requiredCapabilities": [
+        "CanMix",
+        "CanHeat"
+      ],
+      "parameters": {
+        "Target Temp": 80,
+        "Duration": 15
+      }
+    }
+  ]
+}

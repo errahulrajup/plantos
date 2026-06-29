@@ -1,0 +1,139 @@
+:root {
+  /* PlantOS Design System Variables */
+
+  /* Palette */
+  --color-background-base: #1e1e24;
+  --color-background-surface: #2b2b36;
+  --color-background-surface-hover: #3a3a47;
+  --color-background-panel: #18181d;
+  
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+
+  --color-border: #3f3f46;
+  --color-border-focus: #3b82f6;
+
+  /* Industrial Alarms */
+  --color-alarm-critical: #ef4444; /* Red */
+  --color-alarm-major: #f97316;    /* Orange */
+  --color-alarm-minor: #eab308;    /* Yellow */
+  --color-alarm-info: #3b82f6;     /* Blue */
+  --color-alarm-good: #22c55e;     /* Green */
+
+  /* Typography */
+  --font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-background-base);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Layout Classes */
+.studio-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.studio-header {
+  height: 48px;
+  background-color: var(--color-background-panel);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-4);
+}
+
+.studio-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.studio-sidebar {
+  width: 300px;
+  background-color: var(--color-background-surface);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.studio-sidebar-header {
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.studio-canvas-container {
+  flex: 1;
+  background-color: var(--color-background-base);
+  position: relative;
+  overflow: hidden;
+  /* Grid background for industrial feel */
+  background-image: linear-gradient(var(--color-border) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: -1px -1px;
+}
+
+.studio-inspector {
+  width: 350px;
+  background-color: var(--color-background-surface);
+  border-left: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Generic Utilities */
+.btn {
+  background-color: var(--color-background-surface-hover);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-border-focus);
+  border-color: var(--color-border-focus);
+}
+
+.btn-primary {
+  background-color: var(--color-alarm-info);
+  border-color: var(--color-alarm-info);
+}

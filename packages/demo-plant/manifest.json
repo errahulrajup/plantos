@@ -1,0 +1,12 @@
+{
+  "name": "@plantos/demo-plant",
+  "version": "1.0.0",
+  "description": "Reference Implementation: Tiny Plant Validation",
+  "dependencies": {
+    "@plantos/core": "^1.0.0"
+  },
+  "capabilities": [
+    "BatchExecution",
+    "TelemetrySimulation"
+  ]
+}

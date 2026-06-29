@@ -1,0 +1,49 @@
+{
+  "id": "REC-MARG-500",
+  "name": "PlantSmör Premium Margarine 500g",
+  "targetProduct": "Margarine",
+  "operations": [
+    {
+      "sequence": 1,
+      "name": "Oil Transfer",
+      "requiredCapabilities": [
+        "CanTransferOil",
+        "CanStoreOil"
+      ],
+      "parameters": {
+        "Volume": 1000
+      }
+    },
+    {
+      "sequence": 2,
+      "name": "Water Addition",
+      "requiredCapabilities": [
+        "CanStoreWater"
+      ],
+      "parameters": {
+        "Volume": 500
+      }
+    },
+    {
+      "sequence": 3,
+      "name": "Emulsification",
+      "requiredCapabilities": [
+        "CanEmulsify"
+      ],
+      "parameters": {
+        "Duration": 45,
+        "Target RPM": 1500
+      }
+    },
+    {
+      "sequence": 4,
+      "name": "Crystallization",
+      "requiredCapabilities": [
+        "CanChill"
+      ],
+      "parameters": {
+        "Target Temp": 5
+      }
+    }
+  ]
+}

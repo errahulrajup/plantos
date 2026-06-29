@@ -1,0 +1,11 @@
+[
+  {
+    "tag": "DEMO-MX-01",
+    "type": "Mixer",
+    "capabilities": [
+      "CanMix",
+      "CanHeat"
+    ],
+    "capacity": 500
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "tag": "UNL-PMP-01",
+    "type": "Pump",
+    "capabilities": [
+      "CanTransferOil"
+    ],
+    "capacity": 5000
+  },
+  {
+    "tag": "UNL-TK-01",
+    "type": "StorageTank",
+    "capabilities": [
+      "CanStoreOil"
+    ],
+    "capacity": 50000
+  }
+]

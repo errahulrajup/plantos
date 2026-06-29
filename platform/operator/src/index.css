@@ -1,0 +1,101 @@
+:root {
+  /* Operator Touch-Friendly Design System */
+  --color-bg-base: #121212;
+  --color-bg-card: #1e1e1e;
+  --color-bg-input: #2d2d2d;
+  
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #aaaaaa;
+
+  --color-primary: #2563eb;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+
+  --spacing-base: 8px;
+  --spacing-large: 24px;
+  --spacing-xl: 32px;
+  
+  --border-radius: 12px;
+  
+  /* Touch Targets */
+  --touch-target-min: 48px;
+  --touch-target-large: 64px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none; /* Prevent accidental text selection on touch screens */
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  touch-action: pan-y; /* Prevent pinch zoom, allow scroll */
+}
+
+.operator-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.operator-header {
+  height: 72px; /* Large header */
+  background-color: var(--color-bg-card);
+  border-bottom: 2px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-xl);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.operator-content {
+  flex: 1;
+  padding: var(--spacing-xl);
+  overflow-y: auto;
+}
+
+/* Touch-friendly Input */
+.touch-input {
+  width: 100%;
+  height: var(--touch-target-large);
+  background-color: var(--color-bg-input);
+  border: 2px solid #444;
+  border-radius: var(--border-radius);
+  color: white;
+  font-size: 1.5rem;
+  padding: 0 var(--spacing-large);
+  margin-bottom: var(--spacing-large);
+  outline: none;
+}
+.touch-input:focus {
+  border-color: var(--color-primary);
+}
+
+/* Big Buttons */
+.btn-large {
+  width: 100%;
+  height: var(--touch-target-large);
+  border-radius: var(--border-radius);
+  border: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  background-color: #444;
+  cursor: pointer;
+}
+
+.btn-success { background-color: var(--color-success); }
+.btn-primary { background-color: var(--color-primary); }
+.btn-danger { background-color: var(--color-danger); }
+
+.btn-large:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}

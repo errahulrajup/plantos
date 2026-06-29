@@ -1,0 +1,19 @@
+{
+  "name": "plantos-core",
+  "version": "1.0.0",
+  "description": "PlantOS Kernel and Foundation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "dependencies": {
+    "uuid": "^9.0.0"
+  }
+}

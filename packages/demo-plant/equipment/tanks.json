@@ -1,0 +1,18 @@
+[
+  {
+    "tag": "DEMO-TK-01",
+    "type": "Tank",
+    "capabilities": [
+      "CanStore"
+    ],
+    "capacity": 1000
+  },
+  {
+    "tag": "DEMO-TK-02",
+    "type": "Tank",
+    "capabilities": [
+      "CanStore"
+    ],
+    "capacity": 1000
+  }
+]
