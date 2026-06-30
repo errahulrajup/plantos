@@ -1,0 +1,19 @@
+{
+  "name": "plantos",
+  "private": true,
+  "workspaces": [
+    "plantos-core",
+    "platform/*",
+    "samples/*"
+  ],
+  "scripts": {
+    "start:simulation": "npm run test:plantsmor --workspace=@plantos/validation-suite",
+    "test:integration": "ts-node --project tests/tsconfig.json tests/integration/kernel-cmms.test.ts",
+    "operator:cli": "ts-node --project tests/tsconfig.json tests/integration/cli.ts",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up -d",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up"
+  },
+  "devDependencies": {
+    "@types/uuid": "^10.0.0"
+  }
+}

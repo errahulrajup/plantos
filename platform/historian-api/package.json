@@ -1,0 +1,17 @@
+{
+  "name": "@plantos/historian-api",
+  "version": "1.0.0",
+  "description": "Historian API for PlantOS",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "fastify": "^4.24.3",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "@types/node": "^20.8.7"
+  }
+}

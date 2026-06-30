@@ -9,10 +9,7 @@
   },
   "dependencies": {
     "@plantos/runtime": "^0.3.0-alpha",
-    "@plantos/compiler": "^0.3.0-alpha",
-    "@plantsmor/domain": "0.1.0-alpha",
-    "@plantsmor/recipes": "0.1.0-alpha",
-    "@plantsmor/plant-01": "0.1.0-alpha"
+    "@plantos/compiler": "^0.3.0-alpha"
   },
   "devDependencies": {
     "typescript": "^5.2.2",

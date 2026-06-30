@@ -1,4 +1,5 @@
 import { IStateMachineProvider, IStateMachine } from '../interfaces/IStateMachineProvider';
+import { EventDispatcher } from '../../../../plantos-core/src/events/EventDispatcher';
 
 /**
  * Manages the ISA-88 standard Equipment State Machines
@@ -6,10 +7,12 @@ import { IStateMachineProvider, IStateMachine } from '../interfaces/IStateMachin
  */
 export class EquipmentEngine {
   private provider: IStateMachineProvider;
+  private eventDispatcher?: EventDispatcher;
   private activeMachines: Map<string, IStateMachine> = new Map();
 
-  constructor(provider: IStateMachineProvider) {
+  constructor(provider: IStateMachineProvider, eventDispatcher?: EventDispatcher) {
     this.provider = provider;
+    this.eventDispatcher = eventDispatcher;
   }
 
   public initializeEquipment(equipmentId: string) {
@@ -32,6 +35,14 @@ export class EquipmentEngine {
 
     machine.onTransition((state) => {
       console.log(`[EquipmentEngine] ${equipmentId} transitioned to ${state}`);
+      if (this.eventDispatcher) {
+        this.eventDispatcher.publish({
+          eventId: `evt-${Date.now()}-${Math.floor(Math.random()*1000)}`,
+          type: 'EQUIPMENT_STATE_CHANGED',
+          timestamp: new Date().toISOString(),
+          payload: { equipmentId, state }
+        }).catch(err => console.error(err));
+      }
     });
 
     machine.start();

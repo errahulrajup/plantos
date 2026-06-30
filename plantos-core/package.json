@@ -1,5 +1,5 @@
 {
-  "name": "plantos-core",
+  "name": "@plantos/core",
   "version": "0.1.0-alpha",
   "description": "PlantOS Kernel and Foundation",
   "main": "dist/index.js",

@@ -55,9 +55,9 @@ export interface ICommand {
 export interface IEvent {
   eventId: UUID;
   type: string;
-  topic: string;
+  topic?: string;
   payload: any;
-  timestamp: Date;
+  timestamp: string; // ISO 8601 string
   metadata?: Record<string, any>;
 }
 
