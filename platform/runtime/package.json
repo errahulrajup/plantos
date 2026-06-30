@@ -1,0 +1,20 @@
+{
+  "name": "@plantos/runtime",
+  "version": "0.3.0-alpha",
+  "description": "PlantOS Execution Runtime Engine",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev src/index.ts"
+  },
+  "dependencies": {
+    "xstate": "^5.0.0",
+    "@plantos/core": "^0.1.0-alpha",
+    "@plantos/compiler": "^0.3.0-alpha"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "ts-node-dev": "^2.0.0",
+    "@types/node": "^20.8.0"
+  }
+}

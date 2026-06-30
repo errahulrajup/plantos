@@ -27,6 +27,16 @@ services:
     networks:
       - plantos-lan
 
+  plantos-runtime:
+    build:
+      context: .
+      dockerfile: platform/runtime/Dockerfile
+    environment:
+      - API_URL=http://plantos-api:3000
+      - EVENT_BUS=redis://plantos-redis:6379
+    networks:
+      - plantos-lan
+
   plantos-edge-driver:
     build:
       context: .
